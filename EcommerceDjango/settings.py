@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'store.apps.StoreConfig',
     'accounts.apps.AccountsConfig',
-    'CartOrder.apps.CartorderConfig',
+    'orderCart.apps.OrdercartConfig',
+    'product.apps.ProductConfig',
 ]
 
 MIDDLEWARE = [
@@ -126,5 +126,5 @@ STATICFILES_DIRS = [
    os.path.join(BASE_DIR, "static"),
 ]
 
-MEDIA_URL = '/IMAGE/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/IMAGE')
+MEDIA_URL = '/img/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img')
