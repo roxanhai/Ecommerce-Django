@@ -2,6 +2,7 @@ from django.contrib import admin
 from product.models import *
 # Register your models here.
 admin.site.register(Item)
+admin.site.register(CategoryItem)
 admin.site.register(FeedBack)
 admin.site.register(Comment)
 admin.site.register(Publisher)
@@ -14,3 +15,4 @@ admin.site.register(Television)
 admin.site.register(CategoryClothes)
 admin.site.register(Clothes)
 admin.site.register(Laptop)
+admin.site.register(Book)

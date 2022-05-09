@@ -1,0 +1,43 @@
+{% extends 'store/base.html' %} {% load static %} {% block content %}
+<main class="container my-4">
+  <!-- Featured Products -->
+  <h3 class="my-4 border-bottom pb-1">
+    <spans class="text-muted"> Search result for </spans>
+    {{request.GET.searchProduct}}
+  </h3>
+  <!-- Card  -->
+
+  <div class="row">
+    {% for item in itemList %}
+    <div class="col-md-3 mb-4" style="text-align: center">
+      <div class="card shadow">
+        <a href="{% url 'product-detail' item.id %}"
+          ><img
+            src="/media/{{item.imageItem}}"
+            class="card-img-top"
+            alt="{{item.name}}"
+            style="width: 100%; height: 100%; object-fit: contain"
+        /></a>
+        <div class="card-body">
+          <h6 class="card-text">
+            <a href="{% url 'product-detail' item.id %}">{{item.name}} </a>
+          </h6>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-sm btn-primary">
+            <i class="fa fa-shopping-cart"></i>
+          </button>
+          <button class="btn btn-sm btn-danger">
+            <i class="fa fa-heart"></i>
+          </button>
+          <span class="float-right">
+            4.5/5
+            <i class="fa fa-star text-warning"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+</main>
+{% endblock %}
