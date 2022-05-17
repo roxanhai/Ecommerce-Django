@@ -8,7 +8,26 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    >
+            function getCookie(name) {
+          let cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+              const cookies = document.cookie.split(';');
+              for (let i = 0; i < cookies.length; i++) {
+                  const cookie = cookies[i].trim();
+                  // Does this cookie string begin with the name we want?
+                  if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                  }
+              }
+          }
+          return cookieValue;
+      }
+      const csrftoken = getCookie('csrftoken');
+    </script>
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
@@ -96,6 +115,22 @@
               <div class="input-group mb-2">
                 <div class="input-group-append">
                   <span class="input-group-text"
+                    ><i class="fas fa-user"></i
+                  ></span>
+                </div>
+                {{form.first_name}}
+              </div>
+              <div class="input-group mb-2">
+                <div class="input-group-append">
+                  <span class="input-group-text"
+                    ><i class="fas fa-user"></i
+                  ></span>
+                </div>
+                {{form.last_name}}
+              </div>
+              <div class="input-group mb-2">
+                <div class="input-group-append">
+                  <span class="input-group-text"
                     ><i class="fas fa-envelope-square"></i
                   ></span>
                 </div>
@@ -144,10 +179,12 @@
 
       //Query All input fields (Xử lý các Input trong Form)
       var form_fields = document.getElementsByTagName("input");
-      form_fields[1].placeholder = "Username..";
-      form_fields[2].placeholder = "Email..";
-      form_fields[3].placeholder = "Enter password...";
-      form_fields[4].placeholder = "Re-enter Password...";
+      form_fields[1].placeholder = "Username...";
+      form_fields[2].placeholder = "First name...";
+      form_fields[3].placeholder = "Last name...";
+      form_fields[4].placeholder = "Email...";
+      form_fields[5].placeholder = "Enter password...";
+      form_fields[6].placeholder = "Re-enter Password...";
 
       for (var field in form_fields) {
         form_fields[field].className += " form-control";

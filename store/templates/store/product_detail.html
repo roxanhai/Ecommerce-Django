@@ -34,12 +34,17 @@
       </table>
       <hr />
       <div class="input-group my-3" style="width: 30%">
-        <input type="number" class="form-control" />
+        <input
+          type="number"
+          class="form-control"
+          value="0"
+          id="product_quantity"
+        />
         <div class="input-group-append">
           <button
-            class="btn btn-primary btn-sm"
-            type="button"
-            id="button-addon2"
+            data-product_id="{{data.id}}"
+            data-action="add"
+            class="btn btn-primary btn-sm add-cart"
           >
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
@@ -61,7 +66,7 @@
         {% elif data.state_Id.name == "ELECTRONIC" %}
         <tr>
           <th>Brand</th>
-          <td><a href="#">{{real_life_item}}</a></td>
+          <td><a href="#">{{data_item.brand}}</a></td>
         </tr>
         {%endif%}
         <tr>
@@ -104,5 +109,6 @@
   </div>
 </main>
 <script src="https://cdn.jsdelivr.net/gh/igorlino/elevatezoom-plus@1.2.3/src/jquery.ez-plus.js"></script>
+
 <script></script>
 {% endblock %}

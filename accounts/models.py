@@ -12,6 +12,12 @@ class Customer(models.Model):
     totalPay = models.FloatField(default=0)
     active_status = models.BooleanField(default=False)
     fullName = models.CharField(max_length=255)
+    
+    class Meta:
+        verbose_name_plural= 'Customer'
+        
+    def __str__(self):
+        return str(self.id) +"."+self.fullName
 
 class Staff(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name = 'staff',null=True, blank=True)
