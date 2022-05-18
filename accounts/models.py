@@ -1,6 +1,7 @@
 from email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
+# from orderCart.models import Order
 from django.forms import ImageField
 # Create your models here.
 # class Staff(models.Model):
@@ -18,6 +19,14 @@ class Customer(models.Model):
         
     def __str__(self):
         return str(self.id) +"."+self.fullName
+    
+    @property
+    def get_cart_total_quantity(self):
+        for temp_order in self.order_set.all():
+            if temp_order.completedStatus == False:
+                return temp_order.get_cart_total_quantity
+        return 0
+    
 
 class Staff(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name = 'staff',null=True, blank=True)

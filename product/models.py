@@ -41,7 +41,7 @@ class FeedBack(models.Model):
     star_rate = models.IntegerField(default=0, choices=[(i, i) for i in range(1, 5)])
     date_added = models.DateTimeField(auto_now_add=True) 
     itemID = models.ForeignKey(Item, on_delete=models.CASCADE)
-    customerID = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    # customerID = models.ForeignKey(Customer, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural='9(5).(ITEM)_FeedBack'
@@ -49,7 +49,7 @@ class Comment(models.Model):
     content = models.CharField(max_length=255)
     date_added = models.DateTimeField(auto_now_add=True) 
     itemID = models.ForeignKey(Item, on_delete=models.CASCADE)
-    customerID = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    # customerID = models.ForeignKey(Customer, on_delete=models.CASCADE)
     
     class Meta:
         verbose_name_plural='9(6).(ITEM)_Comment'

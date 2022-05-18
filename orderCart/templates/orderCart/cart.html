@@ -1,0 +1,61 @@
+{% extends 'store/base.html' %} {% load static %} {% block content %}
+<main class="container my-4">
+  <!-- Featured Products -->
+  <h3 class="my-4 border-bottom pb-1">
+    Cart ({{request.user.customer.get_cart_total_quantity}})
+  </h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in order_list %}
+      <tr>
+        <td>
+          <img src="/media/{{item.itemID.imageItem}}" width="200" />
+          <p>
+            <a href="{% url 'product-detail' item.itemID.id %}"
+              >{{item.itemID.name}}</a
+            >
+          </p>
+        </td>
+        <td>
+          <input
+            type="number"
+            value="{{item.quantity}}"
+            style="vertical-align: bottom"
+          />
+          <button class="btn btn-sm btn-primary">
+            <i class="fa fa-sync"></i>
+          </button>
+          <button class="btn btn-sm btn-danger">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+        <td>{{item.itemID.outPrice}}</td>
+        <td>{{item.get_total_price}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"></td>
+        <th>Total</th>
+        <th>{{order.get_cart_total_price}}</th>
+      </tr>
+      <tr>
+        <td colspan="4" align="right">
+          <a href="{% url 'checkout' %}" class="btn btn-dark btn-sm"
+            >Checkout <i class="fa fa-long-arrow-alt-right"></i
+          ></a>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</main>
+{% endblock %}

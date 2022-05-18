@@ -1,4 +1,5 @@
 {% extends 'store/base.html' %} {% load static %} {% block content %}
+<script type="text/javascript" src="{% static 'myJS/cart.js' %}"></script>
 <main class="container my-4">
   <!-- Featured Products -->
   <h3 class="my-4 border-bottom pb-1">{{data.name}}</h3>
@@ -44,7 +45,8 @@
           <button
             data-product_id="{{data.id}}"
             data-action="add"
-            class="btn btn-primary btn-sm add-cart"
+            class="btn btn-primary btn-sm"
+            id="add-to-cart"
           >
             <i class="fa fa-shopping-cart"></i> Add to Cart
           </button>
@@ -108,6 +110,7 @@
     </div>
   </div>
 </main>
+<script type="text/javascript" src="{% static 'JS/cart.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/gh/igorlino/elevatezoom-plus@1.2.3/src/jquery.ez-plus.js"></script>
 
 <script></script>
